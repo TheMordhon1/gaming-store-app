@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-interface stepItemProps {
+export interface stepItemProps {
 	icon: 'step1' | 'step2' | 'step3';
 	title: string;
 	desc1: string;

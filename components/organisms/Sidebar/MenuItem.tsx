@@ -12,16 +12,15 @@ interface menuItemProps {
 export default function MenuItem(props: Partial<menuItemProps>) {
 	const { title, icon, active, href = "/member" } = props;
 	const classItem = cx({
-		'item': true,
-		'mb-30': true,
+		'item text-lg text-decoration-none mb-30': true,
 		'active': active,
 	})
 	return (
-		<div className={classItem}>
+		<Link href={href} className={classItem}>
 			<Image src={`/icon/ic-menu-${icon}.svg`} className="icon me-3" width={25} height={25} alt="menu-icon" />
 			<p className="item-title m-0">
-				<Link href={href} className="text-lg text-decoration-none">{title}</Link>
+				{title}
 			</p>
-		</div>
+		</Link>
 	)
 }

@@ -1,32 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FC, ReactNode } from "react";
 
-interface gameItemProps {
+export interface gameItemProps {
 	title: string;
 	category: "Mobile" | "Desktop";
-	thumbnail: 'thumbnail-1' | 'thumbnail-2' | 'thumbnail-3' | 'thumbnail-4' | 'thumbnail-5';
+	thumbnail: '/img/thumbnail-1.png' | '/img/thumbnail-2.png' | '/img/thumbnail-3.png' | '/img/thumbnail-4.png' | '/img/thumbnail-5.png';
 }
+
 export default function GameItem(props: gameItemProps) {
 	const { title, category, thumbnail } = props
+
 	return (
 		<div className="featured-game-card position-relative">
 			<Link href="/detail">
-				<div className="blur-sharp">
-					<Image className="thumbnail" src={`/img/${thumbnail}.png`} width="205" height="270" alt={thumbnail} />
-				</div>
-				<div className="cover position-absolute bottom-0 m-32">
-					<div className="d-flex flex-column h-100 justify-content-between text-decoration-none">
-						<div className="game-icon mx-auto">
-							<Image src='/icon/console.svg' width={54} height={36} alt="icon-console" />
-						</div>
-						<div>
-							<p className="fw-semibold text-white text-xl m-0">{title}</p>
-							<p className="fw-light text-white m-0">{category}</p>
+				<>
+					<div className="blur-sharp">
+						<Image className="thumbnail" src={thumbnail} width="205" height="270" alt={thumbnail} />
+					</div>
+					<div className="cover position-absolute bottom-0 m-32">
+						<div className="d-flex flex-column h-100 justify-content-between text-decoration-none">
+							<div className="game-icon mx-auto">
+								<Image src='/icon/console.svg' width={54} height={36} alt="icon-console" />
+							</div>
+							<div>
+								<p className="fw-semibold text-white text-xl m-0">{title}</p>
+								<p className="fw-light text-white m-0">{category}</p>
+							</div>
 						</div>
 					</div>
-				</div>
+				</>
 			</Link>
-
 		</div>
 	)
 }
